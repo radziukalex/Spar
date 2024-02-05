@@ -185,15 +185,12 @@ extension ProductViewController {
     private func setupScrollView(scrollView: UIScrollView, contentView: UIView) {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        let heightConst = contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
-        heightConst.isActive = true
-        heightConst.priority = UILayoutPriority(50)
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
 
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
@@ -201,11 +198,10 @@ extension ProductViewController {
         contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
         contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
         contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 1.2).isActive = true
     }
     
     private func setupProductMainImageUI(image: UIImageView) {
-        view.addSubview(image)
+        contentView.addSubview(image)
         image.image = UIImage(named: "lipa")
         image.translatesAutoresizingMaskIntoConstraints = false
         image.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
@@ -216,7 +212,7 @@ extension ProductViewController {
     }
     
     private func setupProductNameUI(name: UILabel) {
-        view.addSubview(name)
+        contentView.addSubview(name)
         name.translatesAutoresizingMaskIntoConstraints = false
         name.topAnchor.constraint(equalTo: productMainImage.bottomAnchor, constant: 20).isActive = true
         name.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
@@ -224,7 +220,7 @@ extension ProductViewController {
     }
     
     private func setupProductCountryFlagUI(image: UIImageView) {
-        view.addSubview(image)
+        contentView.addSubview(image)
         image.translatesAutoresizingMaskIntoConstraints = false
         image.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         image.topAnchor.constraint(equalTo: productName.bottomAnchor, constant: 20).isActive = true
@@ -242,7 +238,7 @@ extension ProductViewController {
     }
     
     private func setupProductCountryNameUI(country: UILabel) {
-        view.addSubview(country)
+        contentView.addSubview(country)
         country.translatesAutoresizingMaskIntoConstraints = false
         country.leadingAnchor.constraint(equalTo: productCountryFlag.trailingAnchor, constant: 1).isActive = true
         country.topAnchor.constraint(equalTo: productCountryFlag.topAnchor).isActive = true
@@ -250,7 +246,7 @@ extension ProductViewController {
     }
     
     private func setupProductDescriptionTitleUI(title: UILabel) {
-        view.addSubview(title)
+        contentView.addSubview(title)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.topAnchor.constraint(equalTo: productCountryName.bottomAnchor, constant: 30).isActive = true
         title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
@@ -258,7 +254,7 @@ extension ProductViewController {
     }
     
     private func setupProductDescriptionLabelUI(label: UILabel) {
-        view.addSubview(label)
+        contentView.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.topAnchor.constraint(equalTo: productDescriptionTitle.bottomAnchor, constant: 15).isActive = true
         label.leadingAnchor.constraint(equalTo: productDescriptionTitle.leadingAnchor).isActive = true
@@ -266,7 +262,7 @@ extension ProductViewController {
     }
     
     private func setupProductCharacteristicTitleUI(title: UILabel) {
-        view.addSubview(title)
+        contentView.addSubview(title)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.topAnchor.constraint(equalTo: productDescriptionLabel.bottomAnchor, constant: 30).isActive = true
         title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
@@ -274,7 +270,7 @@ extension ProductViewController {
     }
     
     private func setupProductCharacteristicTextUI(text: UILabel) {
-        view.addSubview(text)
+        contentView.addSubview(text)
         text.translatesAutoresizingMaskIntoConstraints = false
         text.topAnchor.constraint(equalTo: productCharacteristicTitle.bottomAnchor, constant: 15).isActive = true
         text.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
@@ -282,7 +278,7 @@ extension ProductViewController {
     }
     
     private func setupProductCardPriceUI(button: UIButton) {
-        view.addSubview(button)
+        contentView.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.topAnchor.constraint(equalTo: productMainImage.topAnchor).isActive = true
         button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
@@ -290,7 +286,7 @@ extension ProductViewController {
     }
     
     private func setupReviewsLabelUI(label: UILabel) {
-        view.addSubview(label)
+        contentView.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.topAnchor.constraint(equalTo: productCharacteristicText.bottomAnchor, constant: 30).isActive = true
         label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
@@ -299,7 +295,7 @@ extension ProductViewController {
     }
     
     private func setupReviewsButtonUI(button: UIButton) {
-        view.addSubview(button)
+        contentView.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.topAnchor.constraint(equalTo: reviewsLabel.topAnchor).isActive = true
         button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
@@ -309,12 +305,13 @@ extension ProductViewController {
     }
     
     private func setupReviewRequestUI(button: UIButton) {
-        view.addSubview(button)
+        contentView.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.topAnchor.constraint(equalTo: reviewsLabel.bottomAnchor, constant: 180).isActive = true
         button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
         button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
         button.heightAnchor.constraint(equalToConstant: 34).isActive = true
+        button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     }
     
     private func setupUI() {
@@ -337,7 +334,7 @@ extension ProductViewController {
 
 extension ProductViewController {
     private func setupCollectionView() {
-        view.addSubview(productCollectionView)
+        contentView.addSubview(productCollectionView)
         productCollectionView.contentInsetAdjustmentBehavior = .never
         productCollectionView.showsHorizontalScrollIndicator = false
         productCollectionView.showsVerticalScrollIndicator = false
